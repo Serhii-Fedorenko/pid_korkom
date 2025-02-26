@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/pid_korkom/static/js/main.eab6d17f.js",
+    "index.html": "/pid_korkom/index.html",
+    "main.eab6d17f.js.map": "/pid_korkom/static/js/main.eab6d17f.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.eab6d17f.js"
+  ]
+}
