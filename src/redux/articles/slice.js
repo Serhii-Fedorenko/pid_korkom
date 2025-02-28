@@ -1,4 +1,4 @@
-import { CreateSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-export const articlesSlice = CreateSlice({
+export const articlesSlice = createSlice({
   name: "articles",
   initialState,
   reducers: {},
