@@ -1,12 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
+import { toggleModal } from "../redux/modal/slice";
+import Modal from "./Modal/Modal";
+import Register from "./Register";
 
 const Layout = () => {
+  const dispatch = useDispatch()
+  const isModalOpen = useSelector((state) => state.modal.isModalOpen);
+
   return (
     <div>
       <nav>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/articles'>Articles</NavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/articles">Articles</NavLink>
+        <button onClick={() => dispatch(toggleModal())}>Log in</button>
       </nav>
+      {isModalOpen && (
+        <Modal>
+          <Register />
+        </Modal>
+      )}
       <Outlet />
     </div>
   );
