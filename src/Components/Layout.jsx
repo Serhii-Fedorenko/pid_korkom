@@ -11,9 +11,9 @@ const Layout = () => {
   return (
     <div>
       <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/articles">Articles</NavLink>
-        <button onClick={() => dispatch(toggleModal())}>Log in</button>
+        <NavLink to="/">Головна</NavLink>
+        <NavLink to="/articles">Дописи</NavLink>
+        <button onClick={() => dispatch(toggleModal())}>Увійти</button>
       </nav>
       {isModalOpen && (
         <Modal>
