@@ -6,12 +6,18 @@ const initialState = {
   token: null,
   isLogedIn: false,
   isRefreshing: false,
+  isRegistered: false,
   error: "",
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    toggleForm: (state) => {
+      state.isRegistered = !state.isRegistered;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, action) => {
@@ -32,4 +38,5 @@ const authSlice = createSlice({
   },
 });
 
+export const {toggleForm} = authSlice.actions;
 export const authReducer = authSlice.reducer;
