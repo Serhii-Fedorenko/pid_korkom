@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
+import { logout } from "../redux/auth/operations";
 import { toggleModal } from "../redux/modal/slice";
 import Login from "./Login";
 import Modal from "./Modal/Modal";
@@ -23,7 +24,7 @@ const Layout = () => {
         {isLoggedIn && (
           <>
             <p>Вітаю {user.name}</p>
-            <button>Вийти</button>
+            <button onClick={() => dispatch(logout())}>Вийти</button>
           </>
         )}
       </nav>
