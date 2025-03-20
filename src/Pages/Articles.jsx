@@ -10,7 +10,6 @@ const Articles = () => {
     dispatch(fetchAll());
   }, [dispatch]);
 
-  console.log(articles);
   return (
     <>
       <h1>Articles page</h1>

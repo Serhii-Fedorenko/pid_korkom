@@ -29,7 +29,9 @@ const Register = () => {
         <br />
         <button type="submit">Зареєструватися</button>
       </form>
-      <button type="button" onClick={() => dispatch(toggleForm())}>Вже є обліковий запис ?</button>
+      <button type="button" onClick={() => dispatch(toggleForm())}>
+        Вже є обліковий запис ?
+      </button>
     </>
   );
 };

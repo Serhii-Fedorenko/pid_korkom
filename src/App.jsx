@@ -1,9 +1,18 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Articles from "./Pages/Articles";
 import Home from "./Pages/Home";
+import { refreshUser } from "./redux/auth/operations";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

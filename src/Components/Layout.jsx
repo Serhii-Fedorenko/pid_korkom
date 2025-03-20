@@ -9,13 +9,23 @@ const Layout = () => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
   const isRegistered = useSelector((state) => state.auth.isRegistered);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
 
   return (
     <div>
       <nav>
         <NavLink to="/">Головна</NavLink>
         <NavLink to="/articles">Дописи</NavLink>
-        <button onClick={() => dispatch(toggleModal())}>Увійти</button>
+        {!isLoggedIn && (
+          <button onClick={() => dispatch(toggleModal())}>Увійти</button>
+        )}
+        {isLoggedIn && (
+          <>
+            <p>Вітаю {user.name}</p>
+            <button>Вийти</button>
+          </>
+        )}
       </nav>
       {isModalOpen && (
         <Modal>
