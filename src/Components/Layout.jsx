@@ -5,7 +5,6 @@ import { toggleModal } from "../redux/modal/slice";
 import Login from "./Login";
 import Modal from "./Modal/Modal";
 import Register from "./Register";
-import Dashboard from "../Pages/Dashboard";
 
 const Layout = () => {
   const dispatch = useDispatch();
