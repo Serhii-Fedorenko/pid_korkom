@@ -5,6 +5,7 @@ import { toggleModal } from "../redux/modal/slice";
 import Login from "./Login";
 import Modal from "./Modal/Modal";
 import Register from "./Register";
+import Dashboard from "../Pages/Dashboard";
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const Layout = () => {
   const isRegistered = useSelector((state) => state.auth.isRegistered);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
+  const isAdmin = useSelector((state) => state.auth.user.role) === "admin";
 
   return (
     <div>
@@ -21,6 +23,7 @@ const Layout = () => {
         {!isLoggedIn && (
           <button onClick={() => dispatch(toggleModal())}>Увійти</button>
         )}
+        {isAdmin && <NavLink to="/admin">Dashboard</NavLink>}
         {isLoggedIn && (
           <>
             <p>Вітаю {user.name}</p>
