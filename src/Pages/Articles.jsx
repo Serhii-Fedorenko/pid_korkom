@@ -10,15 +10,18 @@ const Articles = () => {
     dispatch(fetchAll());
   }, [dispatch]);
 
+  const reversedArticles = articles.toReversed();
+
   return (
     <>
       <h1>Articles page</h1>
       <ul>
         {articles &&
-          articles.map((item) => (
+          reversedArticles.map((item) => (
             <li key={item._id}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
+              
             </li>
           ))}
       </ul>

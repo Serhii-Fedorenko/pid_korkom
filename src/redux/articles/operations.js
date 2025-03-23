@@ -26,3 +26,15 @@ export const addArticle = createAsyncThunk(
     }
   }
 );
+
+export const deleteArticle = createAsyncThunk(
+  "articles/delete",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.delete(`/articles/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

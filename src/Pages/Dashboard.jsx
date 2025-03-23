@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAll } from "../redux/articles/operations";
+import { deleteArticle, fetchAll } from "../redux/articles/operations";
 import ArticlesForm from "../Components/ArticlesForm";
 
 const Dashboard = () => {
@@ -12,6 +12,8 @@ const Dashboard = () => {
     dispatch(fetchAll());
   }, [dispatch]);
 
+  const reversedArticles = articles.toReversed();
+
   return (
     <div style={{ display: "flex" }}>
       <div>
@@ -19,10 +21,13 @@ const Dashboard = () => {
         <button onClick={() => setArticleForm(true)}>Додати</button>
         <ul>
           {articles &&
-            articles.map((item) => (
+            reversedArticles.map((item) => (
               <li key={item._id}>
                 <h5>{item.title}</h5>
                 <p>{item.text}</p>
+                <button onClick={() => dispatch(deleteArticle(item._id))}>
+                  Видалити
+                </button>
               </li>
             ))}
         </ul>

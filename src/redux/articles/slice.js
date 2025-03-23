@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addArticle, fetchAll } from "./operations";
+import { addArticle, deleteArticle, fetchAll } from "./operations";
 
 const initialState = {
   items: [],
@@ -35,6 +35,20 @@ export const articlesSlice = createSlice({
         state.items.unshift(action.payload);
       })
       .addCase(addArticle.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(deleteArticle.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteArticle.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          (item) => item._id === action.payload._id
+        );
+        state.items.splice(index, 1);
+      })
+      .addCase(deleteArticle.rejected, (state, action) => {
         state.error = action.payload;
       });
   },
