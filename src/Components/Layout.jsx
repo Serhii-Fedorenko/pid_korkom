@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
 import { logout } from "../redux/auth/operations";
 import { toggleModal } from "../redux/modal/slice";
-import Login from "./Login";
+import Login from "./Forms/Login";
+import Register from "./Forms/Register";
 import Modal from "./Modal/Modal";
-import Register from "./Register";
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -12,17 +12,18 @@ const Layout = () => {
   const isRegistered = useSelector((state) => state.auth.isRegistered);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
-  const isAdmin = useSelector((state) => state.auth.user.role) === "admin";
+  const isAdmin =
+    useSelector((state) => state.auth.user.email) === "grimm@mail.com"; //todo при першій можливості прибрати цей костиль
 
   return (
     <div>
       <nav>
         <NavLink to="/">Головна</NavLink>
         <NavLink to="/articles">Дописи</NavLink>
+        {isAdmin && <NavLink to="/admin">Dashboard</NavLink>}
         {!isLoggedIn && (
           <button onClick={() => dispatch(toggleModal())}>Увійти</button>
         )}
-        {isAdmin && <NavLink to="/admin">Dashboard</NavLink>}
         {isLoggedIn && (
           <>
             <p>Вітаю {user.name}</p>

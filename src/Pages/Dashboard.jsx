@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteArticle, fetchAll } from "../redux/articles/operations";
-import ArticlesForm from "../Components/ArticlesForm";
+import AddForm from "../Components/Forms/AddForm";
+import EditForm from "../Components/Forms/EditForm";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.articles.items);
-  const [articleForm, setArticleForm] = useState(false);
+  const [addForm, setAddForm] = useState(false);
+  const [itemId, setitemId] = useState("");
+  const [editForm, setEditForm] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAll());
@@ -14,11 +17,16 @@ const Dashboard = () => {
 
   const reversedArticles = articles.toReversed();
 
+  const handleEditButton = (id) => {
+    setEditForm(true);
+    setitemId(id);
+  };
+
   return (
     <div style={{ display: "flex" }}>
       <div>
         <h2>Dashboard</h2>
-        <button onClick={() => setArticleForm(true)}>Додати</button>
+        <button onClick={() => setAddForm(true)}>Додати</button>
         <ul>
           {articles &&
             reversedArticles.map((item) => (
@@ -28,11 +36,17 @@ const Dashboard = () => {
                 <button onClick={() => dispatch(deleteArticle(item._id))}>
                   Видалити
                 </button>
+                <button onClick={() => handleEditButton(item._id)}>
+                  Редагувати
+                </button>
               </li>
             ))}
         </ul>
       </div>
-      <div>{articleForm && <ArticlesForm collapseForm={setArticleForm} />}</div>
+      <div>
+        {addForm && <AddForm collapseForm={setAddForm} />}
+        {editForm && <EditForm id={itemId} collapseForm={setEditForm} />}
+      </div>
     </div>
   );
 };

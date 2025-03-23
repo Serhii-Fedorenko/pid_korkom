@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { addArticle } from "../redux/articles/operations";
+import { addArticle } from "../../redux/articles/operations";
 
-const ArticlesForm = ({ collapseForm }) => {
+const AddForm = ({ collapseForm, itemId }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -14,7 +14,7 @@ const ArticlesForm = ({ collapseForm }) => {
       })
     );
     form.reset();
-    collapseForm()
+    collapseForm();
   };
 
   return (
@@ -26,8 +26,11 @@ const ArticlesForm = ({ collapseForm }) => {
       <textarea name="text" />
       <input type="file" />
       <button type="submit">Додати</button>
+      <button onClick={() => collapseForm()} type="button">
+        Закрити
+      </button>
     </form>
   );
 };
 
-export default ArticlesForm;
+export default AddForm;

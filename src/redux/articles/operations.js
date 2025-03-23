@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://pid-korkom-api.onrender.com/api";
+// axios.defaults.baseURL = "https://pid-korkom-api.onrender.com/api";
+axios.defaults.baseURL = "http://localhost:3000/api";
 
 export const fetchAll = createAsyncThunk(
   "articles/fetchAll",
@@ -38,3 +39,15 @@ export const deleteArticle = createAsyncThunk(
     }
   }
 );
+
+export const editArticle = createAsyncThunk(
+  'articles/update',
+  async ({id, credentials}, thunkAPI) => {
+    try {
+      const response = await axios.put(`/articles/${id}`, credentials);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)

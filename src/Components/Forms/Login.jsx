@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { login } from "../redux/auth/operations";
-import { toggleForm } from "../redux/auth/slice";
+import { login } from "../../redux/auth/operations";
+import { toggleForm } from "../../redux/auth/slice";
 
 const Login = () => {
   const dispatch = useDispatch();

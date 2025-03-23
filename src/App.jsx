@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Components/Layout";
-import Login from "./Components/Login";
+import Login from "./Components/Forms/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import Articles from "./Pages/Articles";
 import Dashboard from "./Pages/Dashboard";
