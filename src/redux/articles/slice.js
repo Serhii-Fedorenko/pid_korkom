@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAll } from "./operations";
+import { addArticle, fetchAll } from "./operations";
 
 const initialState = {
   items: [],
@@ -24,6 +24,17 @@ export const articlesSlice = createSlice({
       })
       .addCase(fetchAll.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(addArticle.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addArticle.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items.unshift(action.payload);
+      })
+      .addCase(addArticle.rejected, (state, action) => {
         state.error = action.payload;
       });
   },
