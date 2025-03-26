@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteArticle, fetchAll } from "../redux/articles/operations";
 import AddForm from "../Components/Forms/AddForm";
 import EditForm from "../Components/Forms/EditForm";
+import { selectArticles } from "../redux/articles/selectors";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const articles = useSelector((state) => state.articles.items);
+  const articles = useSelector(selectArticles);
   const [addForm, setAddForm] = useState(false);
   const [itemId, setitemId] = useState("");
   const [editForm, setEditForm] = useState(false);

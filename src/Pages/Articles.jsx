@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAll } from "../redux/articles/operations";
+import { selectArticles } from "../redux/articles/selectors";
 
 const Articles = () => {
   const dispatch = useDispatch();
-  const articles = useSelector((state) => state.articles.items);
+  const articles = useSelector(selectArticles);
 
   useEffect(() => {
     dispatch(fetchAll());

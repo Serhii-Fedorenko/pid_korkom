@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { editArticle } from "../../redux/articles/operations";
+import { selectArticles } from "../../redux/articles/selectors";
 
 const EditForm = ({ id, collapseForm }) => {
   const dispatch = useDispatch();
-  const articles = useSelector((state) => state.articles.items);
+  const articles = useSelector(selectArticles);
 
   const handleSubmit = (e) => {
     e.preventDefault();
