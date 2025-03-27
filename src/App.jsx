@@ -24,7 +24,7 @@ function App() {
         <Route
           path="admin"
           element={
-            <PrivateRoute component={<Dashboard />} redirectTo="/login" />
+            <PrivateRoute component={<Dashboard />} redirectTo="/" />
           }
         ></Route>
         <Route path="/login" element={<Login />}></Route>

@@ -13,7 +13,7 @@ const Layout = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
   const {user, isLoggedIn, isRegistered} = useAuth()
   const isAdmin =
-    useSelector((state) => state.auth.user.email) === "grimm@mail.com"; //todo при першій можливості прибрати цей костиль
+    useSelector((state) => state.auth.user.role) === "admin";
 
   return (
     <div>
