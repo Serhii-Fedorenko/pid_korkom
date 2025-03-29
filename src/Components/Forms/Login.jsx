@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { toggleForm } from "../../redux/auth/slice";
+import { toggleModal } from "../../redux/modal/slice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Login = () => {
       })
     );
     form.reset();
+    dispatch(toggleModal());
   };
   return (
     <>

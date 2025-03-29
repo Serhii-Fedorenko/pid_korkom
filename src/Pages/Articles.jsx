@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAll } from "../redux/articles/operations";
 import { selectArticles } from "../redux/articles/selectors";
+import Article from "../Components/Article";
 
 const Articles = () => {
   const dispatch = useDispatch();
@@ -19,11 +20,7 @@ const Articles = () => {
       <ul>
         {articles &&
           reversedArticles.map((item) => (
-            <li key={item._id}>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-              
-            </li>
+            <Article key={item._id} article={item} />
           ))}
       </ul>
     </>

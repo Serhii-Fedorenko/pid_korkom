@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { toggleForm } from "../../redux/auth/slice";
+import { toggleModal } from "../../redux/modal/slice";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Register = () => {
       })
     );
     form.reset();
+    dispatch(toggleModal());
   };
 
   return (

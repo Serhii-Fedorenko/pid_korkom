@@ -1,19 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { logout } from "../redux/auth/operations";
 import { selectIsModalOpen } from "../redux/modal/selectors";
 import { toggleModal } from "../redux/modal/slice";
 import Login from "./Forms/Login";
 import Register from "./Forms/Register";
 import Modal from "./Modal/Modal";
+import UserMenu from "./UserMenu";
 
 const Layout = () => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector(selectIsModalOpen);
-  const {user, isLoggedIn, isRegistered} = useAuth()
-  const isAdmin =
-    useSelector((state) => state.auth.user.role) === "admin";
+  const { user, isLoggedIn, isRegistered } = useAuth();
+  const isAdmin = useSelector((state) => state.auth.user?.role) === "admin";
 
   return (
     <div>
@@ -24,12 +23,7 @@ const Layout = () => {
         {!isLoggedIn && (
           <button onClick={() => dispatch(toggleModal())}>Увійти</button>
         )}
-        {isLoggedIn && (
-          <>
-            <p>Вітаю {user.name}</p>
-            <button onClick={() => dispatch(logout())}>Вийти</button>
-          </>
-        )}
+        {isLoggedIn && <UserMenu user={user} />}
       </nav>
       {isModalOpen && (
         <Modal>
