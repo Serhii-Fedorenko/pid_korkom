@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/pid_korkom/static/css/main.f55a78b9.css",
-    "main.js": "/pid_korkom/static/js/main.c0d720eb.js",
+    "main.js": "/pid_korkom/static/js/main.4c99c6c0.js",
     "index.html": "/pid_korkom/index.html",
     "main.f55a78b9.css.map": "/pid_korkom/static/css/main.f55a78b9.css.map",
-    "main.c0d720eb.js.map": "/pid_korkom/static/js/main.c0d720eb.js.map"
+    "main.4c99c6c0.js.map": "/pid_korkom/static/js/main.4c99c6c0.js.map"
   },
   "entrypoints": [
     "static/css/main.f55a78b9.css",
-    "static/js/main.c0d720eb.js"
+    "static/js/main.4c99c6c0.js"
   ]
 }
