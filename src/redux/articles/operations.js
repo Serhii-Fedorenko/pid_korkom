@@ -18,9 +18,11 @@ export const fetchAll = createAsyncThunk(
 
 export const addArticle = createAsyncThunk(
   "articles/add",
-  async (credentials, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const response = await axios.post("/articles", credentials);
+      const response = await axios.post("/admin", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -32,7 +34,7 @@ export const deleteArticle = createAsyncThunk(
   "articles/delete",
   async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(`/articles/${id}`);
+      const response = await axios.delete(`/admin/${id}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -41,13 +43,13 @@ export const deleteArticle = createAsyncThunk(
 );
 
 export const editArticle = createAsyncThunk(
-  'articles/update',
-  async ({id, credentials}, thunkAPI) => {
+  "articles/update",
+  async ({ id, credentials }, thunkAPI) => {
     try {
-      const response = await axios.put(`/articles/${id}`, credentials);
+      const response = await axios.put(`/admin/${id}`, credentials);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message)
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);
