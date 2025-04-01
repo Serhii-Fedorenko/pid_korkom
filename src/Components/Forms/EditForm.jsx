@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editArticle } from "../../redux/articles/operations";
 import { selectArticles } from "../../redux/articles/selectors";
@@ -5,19 +6,19 @@ import { selectArticles } from "../../redux/articles/selectors";
 const EditForm = ({ id, collapseForm }) => {
   const dispatch = useDispatch();
   const articles = useSelector(selectArticles);
+  const [image, setImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    dispatch(
-      editArticle({
-        id: id,
-        credentials: {
-          title: form.elements.title.value,
-          text: form.elements.text.value,
-        },
-      })
-    );
+    const formData = new FormData();
+    formData.append("title", form.elements.title.value);
+    formData.append("text", form.elements.text.value);
+    if (image) {
+      formData.append("image", image);
+    }
+
+    dispatch(editArticle({ id, formData }));
     form.reset();
     collapseForm();
   };
@@ -31,7 +32,11 @@ const EditForm = ({ id, collapseForm }) => {
     >
       <input type="text" name="title" defaultValue={editedArticle.title} />
       <textarea name="text" defaultValue={editedArticle.text} />
-      <input type="file" />
+      <input
+        type="file"
+        name="image"
+        onChange={(e) => setImage(e.target.files[0])}
+      />
       <button type="submit">Змінити</button>
       <button onClick={() => collapseForm()} type="button">
         Скасувати

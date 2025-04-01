@@ -44,9 +44,11 @@ export const deleteArticle = createAsyncThunk(
 
 export const editArticle = createAsyncThunk(
   "articles/update",
-  async ({ id, credentials }, thunkAPI) => {
+  async ({ id, formData }, thunkAPI) => {
     try {
-      const response = await axios.put(`/admin/${id}`, credentials);
+      const response = await axios.put(`/admin/${id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
