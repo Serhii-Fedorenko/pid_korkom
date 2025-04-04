@@ -16,6 +16,18 @@ export const fetchAll = createAsyncThunk(
   }
 );
 
+export const fetchById = createAsyncThunk(
+  "articles/fetchById",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`articles/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const addArticle = createAsyncThunk(
   "articles/add",
   async (formData, thunkAPI) => {

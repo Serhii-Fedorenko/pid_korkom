@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAll } from "../redux/articles/operations";
 import { selectArticles } from "../redux/articles/selectors";
 import Article from "../Components/Article";
+import ArticlesList from "../Components/ArticlesList";
 
 const Articles = () => {
   const dispatch = useDispatch();
@@ -17,12 +18,12 @@ const Articles = () => {
   return (
     <>
       <h1>Articles page</h1>
-      <ul>
+      <ArticlesList>
         {articles &&
           reversedArticles.map((item) => (
             <Article key={item._id} article={item} />
           ))}
-      </ul>
+      </ArticlesList>
     </>
   );
 };

@@ -1,8 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addArticle, deleteArticle, editArticle, fetchAll } from "./operations";
+import {
+  addArticle,
+  deleteArticle,
+  editArticle,
+  fetchAll,
+  fetchById,
+} from "./operations";
 
 const initialState = {
   items: [],
+  currentArticle: null,
   isLoading: false,
   filter: "",
   error: null,
@@ -23,6 +30,18 @@ export const articlesSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchAll.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.currentArticle = action.payload;
+      })
+      .addCase(fetchById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
