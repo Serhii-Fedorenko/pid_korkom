@@ -31,7 +31,9 @@ const Layout = () => {
           {!isRegistered && <Register />}
         </Modal>
       )}
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 };

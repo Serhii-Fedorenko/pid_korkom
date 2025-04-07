@@ -24,9 +24,11 @@ const ArticlePage = () => {
 
   return (
     <div>
-      <h1>{article?.title}</h1>
-      <p>{article?.text}</p>
-      {article?.image && <img src={article.image} alt={article.title} />}
+      <article>
+        <h1>{article?.title}</h1>
+        <p>{article?.text}</p>
+        {article?.image && <img src={article.image} alt={article.title} />}
+      </article>
     </div>
   );
 };
