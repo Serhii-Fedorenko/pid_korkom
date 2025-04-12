@@ -17,7 +17,7 @@ const Articles = () => {
 
   return (
     <>
-      <h1>Articles page</h1>
+      <h1 className="text-3xl font-bold text-center my-6">Articles page</h1>
       <ArticlesList>
         {articles &&
           reversedArticles.map((item) => (

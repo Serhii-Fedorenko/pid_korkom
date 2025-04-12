@@ -23,11 +23,17 @@ const ArticlePage = () => {
   if (error) return <p>Помилка: {error}</p>;
 
   return (
-    <div>
+    <div className="max-w-3xl mx-auto px-4 py-8">
       <article>
-        <h1>{article?.title}</h1>
-        <p>{article?.text}</p>
-        {article?.image && <img src={article.image} alt={article.title} />}
+        <h1 className="text-3xl font-bold mb-4">{article?.title}</h1>
+        <p className="text-gray-700 mb-6">{article?.text}</p>
+        {article?.image && (
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-full max-h-[500px] object-cover rounded"
+          />
+        )}
       </article>
     </div>
   );
