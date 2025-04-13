@@ -10,6 +10,10 @@ import { refreshUser } from "./redux/auth/operations";
 import ArticlePage from "./Pages/ArticlePage";
 import WhiskyPage from "./Pages/WhiskyPage";
 import RumPage from "./Pages/RumPage";
+import TequilaPage from "./Pages/TequilaPage";
+import GinPage from "./Pages/GinPage";
+import WinePage from "./Pages/WinePage";
+import OthersPage from "./Pages/OthersPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +28,13 @@ function App() {
         <Route index element={<Articles />}></Route>
         <Route path="articles/category/whisky" element={<WhiskyPage />}></Route>
         <Route path="articles/category/rum" element={<RumPage />}></Route>
+        <Route
+          path="articles/category/tequila"
+          element={<TequilaPage />}
+        ></Route>
+        <Route path="articles/category/gin" element={<GinPage />}></Route>
+        <Route path="articles/category/wine" element={<WinePage />}></Route>
+        <Route path="articles/category/other" element={<OthersPage />}></Route>
         <Route path="articles/:id" element={<ArticlePage />}></Route>
         <Route
           path="admin"
