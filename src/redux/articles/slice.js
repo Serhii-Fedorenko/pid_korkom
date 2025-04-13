@@ -4,6 +4,7 @@ import {
   deleteArticle,
   editArticle,
   fetchAll,
+  fetchByCategory,
   fetchById,
 } from "./operations";
 
@@ -42,6 +43,18 @@ export const articlesSlice = createSlice({
         state.currentArticle = action.payload;
       })
       .addCase(fetchById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchByCategory.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchByCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchByCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

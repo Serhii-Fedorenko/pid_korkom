@@ -6,9 +6,9 @@ import Login from "./Components/Forms/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import Articles from "./Pages/Articles";
 import Dashboard from "./Pages/Dashboard";
-import Home from "./Pages/Home";
 import { refreshUser } from "./redux/auth/operations";
 import ArticlePage from "./Pages/ArticlePage";
+import WhiskyPage from "./Pages/WhiskyPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,8 +20,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />}></Route>
-        <Route path="articles" element={<Articles />}></Route>
+        <Route index element={<Articles />}></Route>
+        <Route path="articles/category/whisky" element={<WhiskyPage />}></Route>
         <Route path="articles/:id" element={<ArticlePage />}></Route>
         <Route
           path="admin"

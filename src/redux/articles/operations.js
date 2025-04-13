@@ -28,6 +28,18 @@ export const fetchById = createAsyncThunk(
   }
 );
 
+export const fetchByCategory = createAsyncThunk(
+  "articles/fetchByCategory",
+  async (category, thunkAPI) => {
+    try {
+      const response = await axios.get(`articles/category/${category}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const addArticle = createAsyncThunk(
   "articles/add",
   async (formData, thunkAPI) => {
