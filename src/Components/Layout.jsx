@@ -24,6 +24,9 @@ const Layout = () => {
           <NavLink to="/articles/category/whisky" className="hover:underline">
             Віскі
           </NavLink>
+          <NavLink to="/articles/category/rum" className="hover:underline">
+            Ром
+          </NavLink>
           {isAdmin && (
             <NavLink to="/admin" className="hover:underline">
               Dashboard

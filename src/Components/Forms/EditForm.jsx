@@ -14,6 +14,7 @@ const EditForm = ({ id, collapseForm }) => {
     const formData = new FormData();
     formData.append("title", form.elements.title.value);
     formData.append("text", form.elements.text.value);
+    formData.append("category", form.elements.category.value);
     if (image) {
       formData.append("image", image);
     }
@@ -31,6 +32,14 @@ const EditForm = ({ id, collapseForm }) => {
       style={{ display: "flex", flexDirection: "column", marginLeft: "100px" }}
     >
       <input type="text" name="title" defaultValue={editedArticle.title} />
+      <select name="category">
+        <option value="whisky">whisky</option>
+        <option value="rum">rum</option>
+        <option value="tequila">tequila</option>
+        <option value="gin">gin</option>
+        <option value="wine">wine</option>
+        <option value="other">other</option>
+      </select>
       <textarea name="text" defaultValue={editedArticle.text} />
       <input
         type="file"
