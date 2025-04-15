@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
 import { toggleModal } from "../../redux/modal/slice";
-import css from './Modal.module.css'
 
 const modalRoot = document.getElementById("modal-root");
 
@@ -29,8 +28,13 @@ const Modal = ({ children }) => {
   };
 
   return createPortal(
-    <div className={css.Modal__backdrop} onClick={handleBackDropClick}>
-      <div className={css.Modal__content}>{children}</div>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      onClick={handleBackDropClick}
+    >
+      <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md sm:max-w-lg">
+        {children}
+      </div>
     </div>,
     modalRoot
   );
